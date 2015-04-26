@@ -1,0 +1,19 @@
+#! /usr/bin/env python3
+
+import optparse
+
+parser = optparse.OptionParser("potazyum [options] -q [question]")
+parser.add_option("-v", "--vote", dest="vote", default=0, type="int", help="Precise if a answer need to have a sum of vote equal or superior.")
+parser.add_option("-s", "--solved", dest="solved", default=False, help="Precise if a answer need to be solved.")
+parser.add_option("-q", "--question", dest="question", default=False, help="Write your question !")
+
+(options, args) = parser.parse_args()
+
+if len(args) < 1:
+    parser.error("\033[1;31m[x]\033[m Please, precise a option or use --help")
+
+def sortVote(vote):
+    return 0;
+
+def ifSolved():
+    return 0;
