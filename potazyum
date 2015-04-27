@@ -50,6 +50,8 @@ parse = BeautifulSoup.BeautifulSoup(page.read())
 
 if parse.find('div', attrs={'class': 'subheader results-header'}) is None:
     print("\033[1;31m[x]\033[m It seems that the remote site prevented us from doing a search. He must consider us as a robot.")
+    print(" \033[1;36m->\033[m How to fix that for this session ? Go on " + options.type + URL_SEARCH['SEARCH_URI'] + urllib.parse.quote(options.question) + " and complete the captcha.")
+    exit()
 
 resultsHeaders = parse.find('div', attrs={'class': 'subheader results-header'})
 resultsHeaders = resultsHeaders.find('h2').text.strip()

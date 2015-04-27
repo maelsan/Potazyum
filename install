@@ -1,1 +1,9 @@
 #!/usr/bin/env bash
+
+## Deleting the actual potazyum
+rm -rf ~/.potazyum
+
+## Install || Update
+mkdir ~/.potazyum
+cp ./* ~/.potazyum
+#TODO: Update PATH  
