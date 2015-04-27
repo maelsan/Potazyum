@@ -4,6 +4,7 @@ import re
 import optparse
 import urllib.request
 import urllib.parse
+from pyquery import PyQuery
 
 URL_STACKOVERFLOW_SEARCH = "http://stackoverflow.com/search?q="
 
@@ -21,7 +22,8 @@ elif isLink.match(options.question) is None:
     parser.error("\033[1;31m[x]\033[m Dude, write your question.")
 
 page = urllib.request.urlopen(URL_STACKOVERFLOW_SEARCH + urllib.parse.quote(options.question))
-print(page.read())
+
+# ...
 
 def sortVote(vote):
     # TODO:

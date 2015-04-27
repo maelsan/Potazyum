@@ -3,3 +3,11 @@
 [![OS](https://img.shields.io/badge/OS-Linux-orange.svg?style=flat-square)](https://github.com/torvalds/linux)
 
 Work in progress...
+
+## Installation
+
+## How to use it
+
+## Dependencies
+
+## Licence
