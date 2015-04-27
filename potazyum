@@ -11,11 +11,10 @@ URL_STACKOVERFLOW_SEARCH = "http://stackoverflow.com/search?q="
 VERSION = "-> \033[1;36m0.0.0\033[m"
 
 parser = optparse.OptionParser("potazyum [options] -q [question]")
-parser.add_option("-s", "--solved", action="store_true", help="Precise if a answer need to be solved.")
-parser.add_option("-n", "--nvote", dest="nvote", default=0, help="Precise if a answer need to have a sum of vote equal or superior.")
 parser.add_option("-q", "--question", dest="question", default="False", help="Write your question !")
+parser.add_option("-s", "--solved", action="store_true", help="Precise if a answer need to be solved.")
+parser.add_option("-n", "--vote", dest="vote", default=False, help="Precise if a answer need to have a sum of vote equal or superior.")
 parser.add_option("-v", "--version", action="store_true", help="Display version")
-
 
 (options, args) = parser.parse_args()
 isLink = re.compile('(.)+', re.IGNORECASE)
@@ -23,8 +22,6 @@ isLink = re.compile('(.)+', re.IGNORECASE)
 if options.version:
     print(VERSION)
     exit()
-elif len(args) < 1:
-    parser.error("\033[1;31m[x]\033[m Please, precise a option or use --help")
 elif isLink.match(options.question) is None:
     parser.error("\033[1;31m[x]\033[m Dude, write your question.")
 elif options.solved:
@@ -36,21 +33,21 @@ parse = BeautifulSoup.BeautifulSoup(page.read())
 
 resultsHeaders = parse.find('div', attrs={'class': 'subheader results-header'})
 resultsHeaders = resultsHeaders.find('h2').text.strip()
-print ("Number of potentials results : \033[1;36m" + resultsHeaders + "\033[m\n")
+print ("Number of potentials results : \033[1;36m" + resultsHeaders + "\033[m")
+print ("They will not be all displayed (< 10).\n")
 
 for div in parse.findAll('div', attrs={'class': 'question-summary search-result'}):
-    if (div.find('div', attrs={'class': 'status'}) is None):
-        break
-    status = div.find('div', attrs={'class': 'status'})
     color = "\033[1;33m[?]\033[m "
+    if (div.find('div', attrs={'class': 'status'}) is not None):
+        status = div.find('div', attrs={'class': 'status'})
 
-    # answered OR answered-accepted elif unanswered
-    if status['class'][1] == 'answered' or status['class'][1] == 'answered-accepted':
-        color = "\033[1;32m[answered]\033[m "
-    elif status['class'][1] == 'unanswered':
-        color = "\033[1;31m[unanswered]\033[m "
+        # answered OR answered-accepted elif unanswered
+        if status['class'][1] == 'answered' or status['class'][1] == 'answered-accepted':
+            color = "\033[1;32m[answered]\033[m "
+        elif status['class'][1] == 'unanswered':
+            color = "\033[1;31m[unanswered]\033[m "
 
     link = div.find('a')
     print(color + link.text.strip())
-    print("http://stackoverflow.com/" + link['href'].strip() + "\n")
-    time.sleep(1)
+    print("http://stackoverflow.com" + link['href'].strip() + "\n")
+    time.sleep(50.0 / 1000.0)
