@@ -7,13 +7,22 @@ import urllib.parse
 import time
 import bs4 as BeautifulSoup
 
-URL_STACKOVERFLOW_SEARCH = "http://stackoverflow.com/search?q="
+# Developer, Unix & Security
+URL_SEARCH = {
+    'SEARCH_ROOT_STACK':     "http://stackoverflow.com",
+    'SEARCH_ROOT_UNIX':      "http://unix.stackexchange.com",
+    'SEARCH_ROOT_SECURITY':  "http://security.stackexchange.com",
+
+    'SEARCH_URI': "/search?q="
+}
+
 VERSION = "-> \033[1;36m0.0.0\033[m"
 
 parser = optparse.OptionParser("potazyum [options] -q [question]")
 parser.add_option("-q", "--question", dest="question", default="False", help="Write your question !")
 parser.add_option("-s", "--solved", action="store_true", help="Precise if a answer need to be solved.")
 parser.add_option("-n", "--vote", dest="vote", default=False, help="Precise if a answer need to have a sum of vote equal or superior.")
+parser.add_option("-t", "--type", dest="type", default="stack", help="Precise the plateform : stack | unix | security.")
 parser.add_option("-v", "--version", action="store_true", help="Display version")
 
 (options, args) = parser.parse_args()
@@ -24,12 +33,23 @@ if options.version:
     exit()
 elif isLink.match(options.question) is None:
     parser.error("\033[1;31m[x]\033[m Dude, write your question.")
-elif options.solved:
-    options.question = options.question + " answers:1" # StackOverflow tips
+
+# StackOverflow tips
+options.question = options.question + " answers:1" if options.solved else options.question
+options.question = options.question + " score:" + options.vote if options.vote else options.question
+
+# Define URI
+options.type = options.type if (options.type == 'stack' or options.type == 'unix' or options.type == 'security') else 'stack'
+options.type = URL_SEARCH['SEARCH_ROOT_STACK'] if (options.type == 'stack') else options.type
+options.type = URL_SEARCH['SEARCH_ROOT_UNIX'] if (options.type == 'unix') else options.type
+options.type = URL_SEARCH['SEARCH_ROOT_SECURITY'] if (options.type == 'security') else options.type
 
 # BeautifulSoup + urllib
-page = urllib.request.urlopen(URL_STACKOVERFLOW_SEARCH + urllib.parse.quote(options.question))
+page = urllib.request.urlopen(options.type + URL_SEARCH['SEARCH_URI'] + urllib.parse.quote(options.question))
 parse = BeautifulSoup.BeautifulSoup(page.read())
+
+if parse.find('div', attrs={'class': 'subheader results-header'}) is None:
+    print("\033[1;31m[x]\033[m It seems that the remote site prevented us from doing a search. He must consider us as a robot.")
 
 resultsHeaders = parse.find('div', attrs={'class': 'subheader results-header'})
 resultsHeaders = resultsHeaders.find('h2').text.strip()
@@ -49,5 +69,5 @@ for div in parse.findAll('div', attrs={'class': 'question-summary search-result'
 
     link = div.find('a')
     print(color + link.text.strip())
-    print("http://stackoverflow.com" + link['href'].strip() + "\n")
+    print(options.type + link['href'].strip() + "\n")
     time.sleep(50.0 / 1000.0)
