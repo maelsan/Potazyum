@@ -4,7 +4,7 @@ import re
 import optparse
 import urllib.request
 import urllib.parse
-from pyquery import PyQuery
+import bs4 as BeautifulSoup
 
 URL_STACKOVERFLOW_SEARCH = "http://stackoverflow.com/search?q="
 
@@ -22,9 +22,18 @@ elif isLink.match(options.question) is None:
     parser.error("\033[1;31m[x]\033[m Dude, write your question.")
 
 page = urllib.request.urlopen(URL_STACKOVERFLOW_SEARCH + urllib.parse.quote(options.question))
+parse = BeautifulSoup.BeautifulSoup(page.read())
 
-# ...
+resultsHeaders = parse.find('div', attrs={'class': 'subheader results-header'})
+resultsHeaders = resultsHeaders.find('h2').text.strip()
+print ("Number of potentials results : " + resultsHeaders)
 
+for div in parse.findAll('div', attrs={'class': 'result-link'}):
+    link = div.find('a')
+    print(link.text.strip())
+    print(link['href'].strip())
+
+"""
 def sortVote(vote):
     # TODO:
     # Sort by vote value.
@@ -34,3 +43,4 @@ def ifSolved():
     # TODO:
     # Sort by state.
     return 0;
+"""
