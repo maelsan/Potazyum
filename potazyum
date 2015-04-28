@@ -16,10 +16,10 @@ URL_SEARCH = {
     'SEARCH_URI': "/search?q="
 }
 
-VERSION = "-> \033[1;36m0.0.0\033[m"
+VERSION = "-> \033[1;36m1.0.0\033[m"
 
 parser = optparse.OptionParser("potazyum [options] -q [question]")
-parser.add_option("-q", "--question", dest="question", default="False", help="Write your question !")
+parser.add_option("-q", "--question", dest="question", default="", help="Write your question !")
 parser.add_option("-s", "--solved", action="store_true", help="Precise if a answer need to be solved.")
 parser.add_option("-n", "--vote", dest="vote", default=False, help="Precise if a answer need to have a sum of vote equal or superior.")
 parser.add_option("-t", "--type", dest="type", default="stack", help="Precise the plateform : stack | unix | security.")
