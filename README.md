@@ -9,11 +9,18 @@ And if you want delete it, use again `install` but with the option `-r`
 
 ## How to use it
 
-    -q or --question For write your question, like this : -q "How to make a sandwich"
+    -q or --question For write your question.
     -s or --solved To view only the questions marked as resolved.
     -n or --vote To view only the questions that have a vote sum greater than or equal.
+    -t or --type To specify the site you want to search (StackOveflow, Unix, Security).
     -h or --help For display the help message (man).
     -v or --version For display the current version of your Potazyum.
+
+Examples :
+
+    potazyum -q "How to make a sandwich" -s -n 30 # By default, on stackoverflow.com
+    potazyum -q "How to hack the NSA" -s -t security # Here, on security.stackexchange.com
+    potazyum -q "Why systemd" -t unix -n 2 # And there, on unix.stackexchange.com
 
 ## Dependencies
 Environment :
