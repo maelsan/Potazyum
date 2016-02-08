@@ -1,8 +1,8 @@
 # Potazyum
-[![Software License](https://img.shields.io/badge/license-GNU%20GPL%20V2-green.svg?style=flat-square)](LICENSE) [![Version](https://img.shields.io/badge/version-1.0.0-red.svg?style=flat-square)](https://github.com/solikate/Potazyum)
+[![Software License](https://img.shields.io/badge/license-GNU%20GPL%20V2-green.svg?style=flat-square)](LICENSE) [![Version](https://img.shields.io/badge/version-1.0.0-red.svg?style=flat-square)](https://github.com/maelsan/Potazyum)
 [![OS](https://img.shields.io/badge/OS-Linux-orange.svg?style=flat-square)](https://github.com/torvalds/linux)
 
-![](https://github.com/solikate/Potazyum/blob/master/demo-2.gif?raw=true)
+![](https://github.com/maelsan/Potazyum/blob/master/demo-2.gif?raw=true)
 
 ## Installation
 Execute the script named `install`, simply.
