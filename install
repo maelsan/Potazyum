@@ -8,7 +8,7 @@ if [ "$1" = "-r" ]; then
   sudo rm -rf /bin/potazyum
 
   printf '\033[1;32mDone ! ;-)\033[m\n' && sleep 0.2
-  printf 'If you did not like something, do not hesitate to report it to me or contribute here: https://github.com/solikate/Potazyum\n'
+  printf 'If you did not like something, do not hesitate to report it to me or contribute here: https://github.com/maelsan/Potazyum\n'
   exit
 fi
 
