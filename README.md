@@ -1,5 +1,5 @@
 # Potazyum
-[![Software License](https://img.shields.io/badge/licence-MIT-blue.svg)](LICENSE) [![codebeat badge](https://codebeat.co/badges/f970588a-3843-448b-8c71-6a3f3140707b)](https://codebeat.co/projects/github-com-maelsan-potazyum) [![Build Status](https://travis-ci.org/maelsan/potazyum.svg?branch=master)](https://travis-ci.org/maelsan/potazyum)
+[![Software License](https://img.shields.io/badge/licence-MIT-blue.svg)](LICENSE) [![codebeat badge](https://codebeat.co/badges/f970588a-3843-448b-8c71-6a3f3140707b)](https://codebeat.co/projects/github-com-maelsan-potazyum) [![Build Status](https://travis-ci.org/maelsan/Potazyum.svg?branch=master)](https://travis-ci.org/maelsan/Potazyum)
 
 
 ![](https://github.com/solikate/Potazyum/blob/master/pictures/demo-2.gif?raw=true)
