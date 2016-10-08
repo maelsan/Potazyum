@@ -32,7 +32,7 @@ I made this script without real installation process. I suppose that you have en
 Potazyum has been made with Python3, and this project uses some libraries that you must install before all.
 
 ```
-pip install requests argparse BeautifulSoup
+pip install -r requirements.txt
 ```
 
 ## Licence
