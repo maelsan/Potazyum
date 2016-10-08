@@ -36,4 +36,4 @@ pip install -r requirements.txt
 ```
 
 ## Licence
-The GNU GENERAL PUBLIC LICENSE MIT. Please see License File for more information.
+The MIT License (MIT). Please see License File for more information.
