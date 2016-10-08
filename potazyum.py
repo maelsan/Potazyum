@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 
-import re, argparse, requests, time, bs4 as BeautifulSoup
+import re, argparse, requests, time, bs4 as beautifulsoup4
 
 # Main domains from Stackoverflow family.
 URL_SEARCH = {
@@ -46,7 +46,7 @@ URI = options.type + URL_SEARCH['SEARCH_URI'] + options.question
 request = requests.get(URI)
 
 # BeautifulSoup to parse the DOM en extract all informations.
-parse = BeautifulSoup.BeautifulSoup(request.text, 'html.parser')
+parse = beautifulsoup4.BeautifulSoup(request.text, 'html.parser')
 
 # If this class is found, that means we are considered as a bot.
 # There is no solution (or perhaps, use an another bot to complete automatically this captcha).

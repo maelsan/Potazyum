@@ -1,0 +1,9 @@
+#
+####### requirements.txt #######
+#
+###### Requirements for Potazyum ######
+# https://github.com/maelsan/Potazyum
+
+requests
+argparse
+beautifulsoup4
