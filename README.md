@@ -1,41 +1,38 @@
 # Potazyum
-[![Software License](https://img.shields.io/badge/license-GNU%20GPL%20V2-green.svg?style=flat-square)](LICENSE) [![Version](https://img.shields.io/badge/version-1.0.0-red.svg?style=flat-square)](https://github.com/solikate/Potazyum)
-[![OS](https://img.shields.io/badge/OS-Linux-orange.svg?style=flat-square)](https://github.com/torvalds/linux)
+[![Software License](https://img.shields.io/badge/licence-GNU%20GPL%202-brightgreen.svg)](LICENSE) [![Version](https://img.shields.io/badge/version-1.0.1-brightgreen.svg)](https://github.com/solikate/Potazyum)
 
-![](https://github.com/solikate/Potazyum/blob/master/demo-2.gif?raw=true)
+![](https://github.com/solikate/Potazyum/blob/master/pictures/demo-2.gif?raw=true)
 
-## Installation
-Execute the script named `install`, simply.
+## Use Potazyum
+Here's all options available on Potazyum:
 
-And if you want delete it, use again `install` but with the option `-r`
+```
+-q or --question 	Your question
+-s or --solved 		To view only the questions marked as resolved
+-n or --vote 		To view only the questions that have a vote sum greater than or equal
+-t or --type 		To specify the site you want to search (StackOveflow, Unix, Security)
+-h or --help 		For display the help message (man)
+-v or --version 	For display the current version of your Potazyum
+ ```
 
-## How to use it
+You can use them together, as follow:
 
-    -q or --question For write your question.
-    -s or --solved To view only the questions marked as resolved.
-    -n or --vote To view only the questions that have a vote sum greater than or equal.
-    -t or --type To specify the site you want to search (StackOveflow, Unix, Security).
-    -h or --help For display the help message (man).
-    -v or --version For display the current version of your Potazyum.
+```shell
+potazyum.py -q "Stop a go routine" -s -n 30 	# Only solved, > 30 upvotes & by default on stackoverflow.com
+potazyum.py -q "Zero day" -s -t security 		# Ony solved, on security.stackexchange.com
+potazyum.py -q "What is systemd" -t unix -n 2 	# On unix.stackexchange.com, > 2 upvotes
+```
 
-Examples :
+## Accessibility
 
-    potazyum -q "How to make a sandwich" -s -n 30 # By default, on stackoverflow.com
-    potazyum -q "How to hack the NSA" -s -t security # Here, on security.stackexchange.com
-    potazyum -q "Why systemd" -t unix -n 2 # And there, on unix.stackexchange.com
+I made this script without real installation process. I suppose that you have enough knowledge about how to add an executable to your path (or to your `bin` directory according to your system). After you added potazyum to your path/bin folder, you will access it from everywhere in your terminal.
 
 ## Dependencies
-Environment :
+Potazyum has been made with Python3, and this project uses some libraries that you must install before all.
 
-- Python3
-
-Modules / Libraries :
-
-- BeautifulSoup
-- urllib
-- optparse
-- re
-- time
+```
+pip install requests argparse BeautifulSoup
+```
 
 ## Licence
 The GNU GENERAL PUBLIC LICENSE V2 (GNU GPL V2). Please see License File for more information.
